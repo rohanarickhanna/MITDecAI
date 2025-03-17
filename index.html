@@ -70,7 +70,6 @@
       transition: all 0.3s;
       margin-bottom: 3px; /* small gap between lines */
     }
-    /* remove the gap after the last line */
     .hamburger div:last-child {
       margin-bottom: 0;
     }
@@ -183,6 +182,37 @@
       box-shadow: 0 0 8px rgba(170,170,170,0.7);
     }
 
+    /* Secondary Section */
+    .secondary-section {
+      margin-top: 60px;
+      animation: fadeIn 1.5s ease forwards;
+      animation-delay: 0.8s;
+      opacity: 0;
+    }
+    .secondary-feature-image {
+      width: 100%;
+      height: 300px;
+      background: url('/MITDecAI/images/secondary-banner.png') no-repeat center center;
+      background-size: cover;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      animation: fadeInImage 1.5s ease forwards;
+      opacity: 0;
+      animation-delay: 1s; /* Staggered to fade in after */
+    }
+    .secondary-section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+    .secondary-section p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
     /* Footer */
     .footer {
       text-align: center;
@@ -254,6 +284,11 @@
       .hero-title {
         font-size: 1.6rem;
       }
+
+      /* Secondary feature image smaller on mobile */
+      .secondary-feature-image {
+        height: 200px;
+      }
     }
   </style>
 </head>
@@ -292,6 +327,19 @@
            class="hero-button">View research</a>
         <a href="about.html" class="hero-button">Learn more →</a>
       </div>
+
+      <!-- New secondary section starts here -->
+      <div class="secondary-section">
+        <div class="secondary-feature-image" role="img" aria-label="Decentralized AI Summit banner image"></div>
+        <h2>Join us at the Decentralized AI Summit</h2>
+        <p>
+          Be part of groundbreaking discussions and networking opportunities. 
+          We invite early-stage startups to <a href=https://docs.google.com/forms/d/e/1FAIpQLScxVf-_jnXbhLIBn_cEbejIkEtDfWpD57AfxALi2s-CtWjR6w/viewform>apply now</a>. Stay tuned for
+          approximate summit schedule and further details.
+        </p>
+      </div>
+      <!-- End of new secondary section -->
+      
     </main>
   </div>
   <footer class="footer">
