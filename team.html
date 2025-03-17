@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MIT Decentralized AI – Team</title>
+  <title>MIT Decentralized AI</title>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
@@ -17,17 +17,16 @@
       background: #000;
       color: #fff;
       font-family: "Inter", Helvetica, Arial, sans-serif;
-      overflow-x: hidden;
+      overflow-x: hidden; /* avoid horizontal scroll due to animations */
     }
 
-    /* Page Container */
+    /* Page Layout */
     .page-container {
       display: flex;
       flex-direction: row;
       min-height: 100vh;
     }
 
-    /* Sidebar */
     .sidebar {
       background: #000;
       width: 280px;
@@ -36,18 +35,18 @@
       animation: slideFromLeft 1s ease forwards;
       transform: translateX(-100%);
       opacity: 0;
-      position: relative;
+      position: relative; /* needed for the hamburger button alignment */
     }
     .sidebar-header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-between; /* space for the hamburger to the right */
       margin-bottom: 30px;
     }
     .sidebar-header h2 {
       font-size: 18px;
-      font-weight: 700;
-      color: white;
+      font-weight: 700; /* now bold */
+      color: white; 
       margin: 0;
     }
 
@@ -55,26 +54,26 @@
     .hamburger {
       display: none;
       cursor: pointer;
-      width: 24px;
-      height: 20px;
+      width: 24px;     /* smaller width */
+      height: 20px;    /* smaller height */
       position: relative;
       flex-direction: column;
       justify-content: space-between;
       background: transparent;
       border: none;
       padding: 0;
-      aria-label: "Toggle menu";
     }
     .hamburger div {
       height: 3px;
       background-color: #fff;
       border-radius: 3px;
       transition: all 0.3s;
-      margin-bottom: 3px;
+      margin-bottom: 3px; /* small gap between lines */
     }
     .hamburger div:last-child {
       margin-bottom: 0;
     }
+    /* Rotate/Translate lines for "X" effect when active */
     .hamburger.active div:nth-child(1) {
       transform: translateY(7px) rotate(45deg);
     }
@@ -96,8 +95,8 @@
       font-size: 16px;
       padding: 8px 0;
       border-radius: 6px;
-      transition:
-        background 0.3s,
+      transition: 
+        background 0.3s, 
         padding-left 0.3s,
         box-shadow 0.3s,
         border 0.3s;
@@ -106,6 +105,7 @@
     .sidebar a:hover {
       background: #222;
       padding-left: 10px;
+      /* Subtle stroke & outer glow */
       border: 1px solid rgba(255,255,255,0.1);
       box-shadow: 0 0 6px rgba(255,255,255,0.2);
       color: #fff;
@@ -117,44 +117,100 @@
       padding: 60px;
       animation: fadeIn 1.2s ease forwards;
       opacity: 0;
-      max-width: 1200px;
-      margin: 0 auto; /* center on large screens */
     }
-    .team-heading {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 40px;
-      text-align: center;
+    .featured-image {
+      margin-top: 50px;
+      width: 100%;
+      height: 300px;
+      background: url('/MITDecAI/images/banner22.png') no-repeat center center;
+      background-size: cover;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      animation: fadeInImage 1.5s ease forwards;
+      opacity: 0;
     }
 
-    /* Team Grid */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 30px;
-      justify-items: center;
-      align-items: start;
+    .hero-title {
+      font-size: 2rem;
+      margin-top: 30px;
+      animation: slideUp 1s ease forwards;
+      animation-delay: 0.2s;
+      transform: translateY(20px);
+      opacity: 0;
     }
-    .team-member {
-      text-align: center;
-      width: 100%;
+    .hero-subtitle {
+      font-size: 1.1rem;
+      margin-top: 15px;
+      line-height: 1.6;
+      animation: slideUp 1s ease forwards;
+      animation-delay: 0.4s;
+      transform: translateY(20px);
+      opacity: 0;
     }
-    /* Placeholder instead of an actual image */
-    .photo-placeholder {
+
+    /* Hero Buttons */
+    .hero-buttons {
+      margin-top: 20px;
+      animation: slideUp 1s ease forwards;
+      animation-delay: 0.6s;
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    .hero-button {
+      display: inline-block;
+      background: #222;
+      color: #fff;
+      border: 1px solid #444;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-right: 10px;
+      border-radius: 6px; 
+      text-decoration: none; 
+      transition: 
+        background 0.3s,
+        box-shadow 0.3s,
+        border 0.3s;
+    }
+    .hero-button:hover {
+      border: 1px solid transparent;
+      background: linear-gradient(to right, #333, #555) padding-box, 
+                  linear-gradient(to right, #666, #999) border-box;
+      box-shadow: 0 0 8px rgba(170,170,170,0.7);
+    }
+
+    /* Secondary Section */
+    .secondary-section {
+      margin-top: 60px;
+      animation: fadeIn 1.5s ease forwards;
+      animation-delay: 0.8s;
+      opacity: 0;
+    }
+    .secondary-feature-image {
       width: 100%;
-      aspect-ratio: 1/1;
-      max-width: 200px;
-      background: #333;
-      border-radius: 10px; /* "rounded squares" */
+      height: 300px;
+      background: url('/MITDecAI/images/secondary-banner.png') no-repeat center center;
+      background-size: cover;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      animation: fadeInImage 1.5s ease forwards;
+      opacity: 0;
+      animation-delay: 1s; /* Staggered to fade in after */
+    }
+    .secondary-section h2 {
+      font-size: 1.6rem;
       margin-bottom: 10px;
-      margin-left: auto;
-      margin-right: auto;
     }
-    .team-member h3 {
+    .secondary-section p {
       font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 0;
-      line-height: 1.4;
+      line-height: 1.6;
+      margin-bottom: 20px;
     }
 
     /* Footer */
@@ -181,45 +237,67 @@
         opacity: 1;
       }
     }
-
-    /* Responsiveness */
-    @media (max-width: 1024px) {
-      .photo-placeholder {
-        max-width: 150px;
+    @keyframes fadeInImage {
+      0% {
+        opacity: 0;
+        transform: scale(1.02);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
       }
     }
+    @keyframes slideUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Basic Mobile Responsiveness */
     @media (max-width: 768px) {
       .page-container {
         flex-direction: column;
       }
       .sidebar {
         width: 100%;
-        padding-right: 50px;
+        padding-right: 50px; /* space for hamburger button */
       }
       .sidebar-nav {
-        display: none;
+        display: none; /* hidden by default on mobile */
       }
       .sidebar.active .sidebar-nav {
-        display: flex;
+        display: flex; /* revealed when toggled */
       }
+
+      /* Show the hamburger below 768px */
       .hamburger {
         display: flex;
       }
+
       .main-content {
         padding: 20px;
       }
-      .photo-placeholder {
-        max-width: 120px;
+      .featured-image {
+        height: 200px; /* reduce banner height on smaller screens */
+      }
+      .hero-title {
+        font-size: 1.6rem;
+      }
+
+      /* Secondary feature image smaller on mobile */
+      .secondary-feature-image {
+        height: 200px;
       }
     }
   </style>
 </head>
 <body>
   <div class="page-container">
-    <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
         <h2>MIT Decentralized AI</h2>
+        <!-- Smaller hamburger aligned with the text -->
         <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
           <div></div>
           <div></div>
@@ -235,63 +313,40 @@
       </nav>
     </aside>
 
-    <!-- Main Content -->
     <main class="main-content">
-      <h1 class="team-heading">Meet Our Team</h1>
-      <div class="team-grid">
-        <!-- 1st row -->
-        <div class="team-member">
-          <div class="photo-placeholder"></div>
-          <h3>Ramesh Raskar</h3>
-        </div>
-        <div class="team-member">
-          <div class="photo-placeholder"></div>
-          <h3>Abhishek Singh</h3>
-        </div>
-        <div class="team-member">
-          <div class="photo-placeholder"></div>
-          <h3>Ayush Chopra</h3>
-        </div>
-        <div class="team-member">
-          <div class="photo-placeholder"></div>
-          <h3>Santanu Bhattacharya</h3>
-        </div>
-        <div class="team-member">
-          <div class="photo-placeholder"></div>
-          <h3>Raj Simhan</h3>
-        </div>
-        <div class="team-member">
-          <div class="photo-placeholder"></div>
-          <h3>Chris Pease</h3>
-        </div>
-
-        <!-- 2nd row -->
-        <div class="team-member">
-          <div class="photo-placeholder"></div>
-          <h3>Rohan Khanna</h3>
-        </div>
-        <div class="team-member">
-          <div class="photo-placeholder"></div>
-          <h3>Chenyu Zhang</h3>
-        </div>
-        <div class="team-member">
-          <div class="photo-placeholder"></div>
-          <h3>Rob Blaine</h3>
-        </div>
-        <div class="team-member">
-          <div class="photo-placeholder"></div>
-          <h3>Honey Pamnani</h3>
-        </div>
+      <div class="featured-image" role="img" aria-label="MIT Decentralized AI banner image"></div>
+      <h1 class="hero-title">
+        Pioneering research on Decentralized AI
+      </h1>
+      <p class="hero-subtitle">
+        We are advancing AI research with a focus on decentralization,
+        privacy, and security to ensure AI benefits all of humanity.
+      </p>
+      <div class="hero-buttons">
+        <a href="https://www.media.mit.edu/projects/decentralized-ai/publications/"
+           class="hero-button">View research</a>
+        <a href="about.html" class="hero-button">Learn more →</a>
       </div>
+
+      <!-- New secondary section starts here -->
+      <div class="secondary-section">
+        <div class="secondary-feature-image" role="img" aria-label="Decentralized AI Summit banner image"></div>
+        <h2>Join us at the Decentralized AI Summit</h2>
+        <p>
+          Be part of groundbreaking discussions and networking opportunities. 
+          We invite early-stage startups to <a href=https://docs.google.com/forms/d/e/1FAIpQLScxVf-_jnXbhLIBn_cEbejIkEtDfWpD57AfxALi2s-CtWjR6w/viewform>apply now</a>. Stay tuned for
+          approximate summit schedule and further details.
+        </p>
+      </div>
+      <!-- End of new secondary section -->
+      
     </main>
   </div>
-
-  <!-- Footer -->
   <footer class="footer">
     <p>MIT Decentralized AI 2025. Rohan Khanna 2025.</p>
   </footer>
 
-  <!-- JS for Hamburger Menu -->
+  <!-- Simple JavaScript to toggle mobile menu -->
   <script>
     const hamburger = document.getElementById('hamburger');
     const sidebar = document.getElementById('sidebar');
