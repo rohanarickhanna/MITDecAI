@@ -17,7 +17,7 @@
       background: #000;
       color: #fff;
       font-family: "Inter", Helvetica, Arial, sans-serif;
-      overflow-x: hidden; /* avoid horizontal scroll due to animations */
+      overflow-x: hidden; 
     }
 
     /* Page Layout */
@@ -35,17 +35,17 @@
       animation: slideFromLeft 1s ease forwards;
       transform: translateX(-100%);
       opacity: 0;
-      position: relative; /* needed for the hamburger button alignment */
+      position: relative;
     }
     .sidebar-header {
       display: flex;
       align-items: center;
-      justify-content: space-between; /* space for the hamburger to the right */
+      justify-content: space-between;
       margin-bottom: 30px;
     }
     .sidebar-header h2 {
       font-size: 18px;
-      font-weight: 700; /* now bold */
+      font-weight: 700; 
       color: white; 
       margin: 0;
     }
@@ -54,8 +54,8 @@
     .hamburger {
       display: none;
       cursor: pointer;
-      width: 24px;     /* smaller width */
-      height: 20px;    /* smaller height */
+      width: 24px;    
+      height: 20px;   
       position: relative;
       flex-direction: column;
       justify-content: space-between;
@@ -68,7 +68,7 @@
       background-color: #fff;
       border-radius: 3px;
       transition: all 0.3s;
-      margin-bottom: 3px; /* small gap between lines */
+      margin-bottom: 3px; 
     }
     .hamburger div:last-child {
       margin-bottom: 0;
@@ -105,7 +105,6 @@
     .sidebar a:hover {
       background: #222;
       padding-left: 10px;
-      /* Subtle stroke & outer glow */
       border: 1px solid rgba(255,255,255,0.1);
       box-shadow: 0 0 6px rgba(255,255,255,0.2);
       color: #fff;
@@ -201,7 +200,7 @@
       margin-bottom: 20px;
       animation: fadeInImage 1.5s ease forwards;
       opacity: 0;
-      animation-delay: 1s; /* Staggered to fade in after */
+      animation-delay: 1s; 
     }
     .secondary-section h2 {
       font-size: 1.6rem;
@@ -305,7 +304,7 @@
         </button>
       </div>
       <nav class="sidebar-nav">
-        <!-- Route About to about.html -->
+        <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="https://www.media.mit.edu/projects/decentralized-ai/publications/">Research</a>
         <a href="team.html">Team</a>

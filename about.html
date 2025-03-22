@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MIT Decentralized AI – About</title>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Neue+Haas+Grotesk:wght@400;700&display=swap");
@@ -17,29 +17,28 @@
       background: #000;
       color: #fff;
       font-family: "Neue Haas Grotesk", sans-serif;
-      overflow-x: hidden; /* avoid horizontal scroll due to animations */
+      overflow-x: hidden;
     }
 
-    /* SIDEBAR: pinned on desktop, slides on mobile */
+    /* SIDEBAR (pinned/fixed on desktop) */
     .sidebar {
-      position: fixed; 
+      position: fixed;
       top: 0;
       left: 0;
       width: 280px;
       height: 100vh;
       background: #000;
-      padding: 20px;
       display: flex;
       flex-direction: column;
       animation: slideFromLeft 1s ease forwards;
-      transform: translateX(0);
       opacity: 1;
+      transform: translateX(0);
     }
     .sidebar-header {
+      padding: 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 30px;
     }
     .sidebar-header h2 {
       font-size: 18px;
@@ -48,7 +47,41 @@
       margin: 0;
     }
 
-    /* Hamburger Button (visible on mobile) */
+    /* SIDEBAR CONTENT + NAV */
+    .sidebar-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* center nav vertically on desktop */
+      padding: 0 20px;
+    }
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .sidebar-nav a {
+      text-decoration: none;
+      color: lightgray;
+      font-size: 16px;
+      padding: 8px 0;
+      border-radius: 6px;
+      transition:
+        background 0.3s,
+        padding-left 0.3s,
+        box-shadow 0.3s,
+        border 0.3s;
+      border: 1px solid transparent;
+    }
+    .sidebar-nav a:hover {
+      background: #222;
+      padding-left: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 6px rgba(255,255,255,0.2);
+      color: #fff;
+    }
+
+    /* HAMBURGER (mobile only) */
     .hamburger {
       display: none;
       cursor: pointer;
@@ -78,88 +111,59 @@
       transform: translateY(-7px) rotate(-45deg);
     }
 
-    .sidebar-nav {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .sidebar a {
-      text-decoration: none;
-      color: lightgray;
-      font-size: 16px;
-      padding: 8px 0;
-      border-radius: 6px;
-      transition: 
-        background 0.3s, 
-        padding-left 0.3s,
-        box-shadow 0.3s,
-        border 0.3s;
-      border: 1px solid transparent;
-    }
-    .sidebar a:hover {
-      background: #222;
-      padding-left: 10px;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 0 6px rgba(255,255,255,0.2);
-      color: #fff;
-    }
-
-    /* MAIN CONTENT: offset by sidebar width on desktop */
+    /* MAIN CONTENT: margin-left for desktop to avoid overlapping sidebar */
     .main-content {
-      margin-left: 280px;
+      margin-left: 280px; 
       padding: 60px;
       animation: fadeIn 1.2s ease forwards;
       opacity: 0;
-      max-width: 1000px; /* optional max width for readability */
-      margin-right: auto; /* center on wide screens */
+      max-width: 1000px;
+      margin-top: 0;
     }
 
-    /* FEATURED IMAGE (now using an <img>) */
+    /* FEATURED IMAGE */
     .featured-image {
-      margin-bottom: 10px;
-      position: relative;
-      border-radius: 12px;
-      overflow: hidden; /* ensures corners stay rounded */
+      margin-bottom: 20px;
       animation: fadeInImage 1.5s ease forwards;
       opacity: 0;
+      border-radius: 12px;
+      overflow: hidden; 
       transition: box-shadow 0.3s, border 0.3s;
     }
     .featured-image img {
       display: block;
       width: 100%;
-      height: auto; /* no clipping, scaled to container width */
+      height: auto;
     }
     .featured-image:hover {
       border: 1px solid rgba(255,255,255,0.1);
       box-shadow: 0 0 8px rgba(255,255,255,0.2);
     }
-    .featured-caption {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 15px 20px;
-      border-radius: 0 0 12px 12px; /* lines up with bottom corners */
-      font-size: 1rem;
-      line-height: 1.5;   
-      margin-bottom: 20px;
-    }
 
+    /* ANIMATIONS & HEADINGS */
     .about-title {
       font-size: 2rem;
-      margin-bottom: 20px;
+      margin-top: 30px;
       animation: slideUp 1s ease forwards;
       animation-delay: 0.2s;
       transform: translateY(20px);
       opacity: 0;
+      margin-bottom: 20px;
     }
-
     .content-section {
       margin-bottom: 40px;
+      animation: fadeIn 1.5s ease forwards;
+      animation-delay: 0.8s;
+      opacity: 0;
     }
     .content-section h2 {
+      font-size: 1.6rem;
       margin-bottom: 15px;
     }
     .content-section p {
-      margin-bottom: 15px;
+      font-size: 1rem;
       line-height: 1.6;
+      margin-bottom: 15px;
     }
     .content-section ul {
       list-style-type: disc;
@@ -183,7 +187,7 @@
       opacity: 0;
     }
 
-    /* ANIMATIONS */
+    /* KEYFRAME ANIMATIONS */
     @keyframes slideFromLeft {
       to {
         transform: translateX(0);
@@ -212,11 +216,10 @@
       }
     }
 
-    /* Mobile (<= 768px) */
+    /* MOBILE STYLES (<= 768px) */
     @media (max-width: 768px) {
-      /* sidebar becomes a sliding panel */
       .sidebar {
-        position: static;
+        position: static; /* no longer fixed */
         width: 100%;
         height: auto;
         transform: translateX(-100%);
@@ -227,28 +230,21 @@
         transform: translateX(0);
         opacity: 1;
       }
-      /* hamburger is visible on mobile */
+      .sidebar-content {
+        justify-content: flex-start;
+      }
       .hamburger {
         display: flex;
       }
-      /* hide nav by default on mobile */
       .sidebar-nav {
         display: none;
       }
       .sidebar.active .sidebar-nav {
         display: flex;
       }
-
-      /* main content no longer offset */
       .main-content {
         margin-left: 0;
         padding: 20px;
-      }
-      .featured-image {
-        height: auto; /* let the <img> define its height */
-      }
-      .featured-caption {
-        font-size: 0.9rem;
       }
       .about-title {
         font-size: 1.5rem;
@@ -257,7 +253,7 @@
   </style>
 </head>
 <body>
-  
+
   <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
@@ -268,22 +264,26 @@
         <div></div>
       </div>
     </div>
-    <nav class="sidebar-nav">
-      <a href="about.html">About</a>
-      <a href="https://www.media.mit.edu/projects/decentralized-ai/publications/">Research</a>
-      <a href="team.html">Team</a>
-      <a href="mailto:dec-ai@media.mit.edu">Contact</a>
-    </nav>
+
+    <div class="sidebar-content">
+      <nav class="sidebar-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="https://www.media.mit.edu/projects/decentralized-ai/publications/">Research</a>
+        <a href="summit.html">Summit</a>
+        <a href="mailto:dec-ai@media.mit.edu">Contact</a>
+      </nav>
+    </div>
   </aside>
 
-  <!-- PAGE CONTAINER (main content) -->
-  <div class="main-content">
-    
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
     <!-- Banner with image -->
     <div class="featured-image">
+      <!-- Adjust path if needed -->
       <img src="images/banner3.png" alt="MIT Decentralized AI banner" />
     </div>
-    <div class="featured-caption">
+    <div style="background: rgba(0, 0, 0, 0.6); padding: 15px 20px; border-radius: 0 0 12px 12px; margin-bottom: 20px;">
       <p>As AI evolves beyond screen assistants and into dimensional applications, decentralization emerges as the critical factor for unlocking its full potential.</p>
     </div>
 
@@ -373,21 +373,22 @@
         for all.
       </p>
       <p>
-        Reach out to us at <a href="mailto:dec-ai@media.mit.edu" style="color: #fff;">dec-ai@media.mit.edu</a>
+        Reach out to us at
+        <a href="mailto:dec-ai@media.mit.edu" style="color: #fff;">dec-ai@media.mit.edu</a>
       </p>
       <p>
         Professor Ramesh Raskar spoke on this topic at EmTech Digital in May 2024.
       </p>
     </section>
 
-  </div>
+  </main>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="footer">
     <p>MIT Decentralized AI 2025. Rohan Khanna 2025.</p>
   </footer>
 
-  <!-- Simple JavaScript to toggle mobile menu -->
+  <!-- MOBILE TOGGLE JS -->
   <script>
     const hamburger = document.getElementById('hamburger');
     const sidebar = document.getElementById('sidebar');
