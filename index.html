@@ -17,7 +17,7 @@
       background: #000;
       color: #fff;
       font-family: "Neue Haas Grotesk", sans-serif;
-      overflow-x: hidden; /* avoid horizontal scroll due to animations */
+      overflow-x: hidden;
     }
 
     /* Page Layout */
@@ -50,6 +50,8 @@
       color: #fff;
       margin: 0;
     }
+
+    /* Hamburger */
     .hamburger {
       display: none;
       cursor: pointer;
@@ -112,22 +114,26 @@
       padding: 60px;
       animation: fadeIn 1.2s ease forwards;
       opacity: 0;
-      max-width: 1000px; /* keep content narrower for readability */
+      max-width: 1000px;
       margin: 0 auto;
     }
 
-    /* FEATURED IMAGES - used for both hero & secondary images */
+    /**
+     * FEATURED IMAGES:
+     * Use aspect-ratio to let images keep their shape naturally without clipping.
+     * “background-size: contain” ensures the entire image is visible. 
+     * If you need them to *fill* instead, replace "contain" with "cover" 
+     * (but note that will crop if the aspect ratio doesn’t match).
+     */
     .featured-image {
+      display: block;
       width: 100%;
-      height: 300px;
+      aspect-ratio: 3 / 1; /* Adjust ratio to match your actual image dimension */
+      border-radius: 12px;
       background-position: center;
       background-repeat: no-repeat;
-      background-size: cover;    /* fills container on desktop & mobile */
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 10px;
+      background-size: contain;  /* Entire image visible, no cropping */
+      margin-bottom: 20px;       /* Some vertical spacing below */
       animation: fadeInImage 1.5s ease forwards;
       opacity: 0;
       transition: box-shadow 0.3s, border 0.3s;
@@ -137,13 +143,7 @@
       box-shadow: 0 0 8px rgba(255,255,255,0.2);
     }
 
-    /* HERO IMAGE: same .featured-image, different name for clarity if needed */
-    .hero-image {
-      background: url('/MITDecAI/images/banner22.png') center center no-repeat;
-      /* The above is effectively included in the inline style, so you can remove or keep. */
-    }
-
-    /* HERO TEXT & HEADINGS */
+    /* HEADINGS & TEXT */
     .hero-title {
       font-size: 2rem;
       margin-top: 30px;
@@ -262,10 +262,10 @@
         padding-right: 50px;
       }
       .sidebar-nav {
-        display: none; /* hidden on mobile by default */
+        display: none;
       }
       .sidebar.active .sidebar-nav {
-        display: flex; /* visible when toggled */
+        display: flex;
       }
       .hamburger {
         display: flex;
@@ -274,17 +274,19 @@
         margin: 0;
         padding: 20px;
       }
-      .featured-image {
-        height: 200px; /* smaller on mobile to fit screens comfortably */
-      }
       .hero-title {
         font-size: 1.5rem;
+      }
+      /* Adjust ratio for smaller screens if desired */
+      .featured-image {
+        aspect-ratio: 3 / 1; /* same ratio or tweak if you want it taller on mobile */
       }
     }
   </style>
 </head>
 <body>
   <div class="page-container">
+
     <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
@@ -307,10 +309,10 @@
     <main class="main-content">
 
       <!-- HERO IMAGE -->
-      <div class="featured-image hero-image"
-           style="background-image: url('/MITDecAI/images/banner22.png');"
+      <div class="featured-image" 
+           style="background-image: url('/MITDecAI/images/banner22.png');" 
            role="img"
-           aria-label="MIT Decentralized AI banner image">
+           aria-label="MIT Decentralized AI banner">
       </div>
 
       <!-- HERO TEXT & BUTTONS -->
@@ -320,17 +322,20 @@
         and security—ensuring that the benefits of AI reach all of humanity.
       </p>
       <div class="hero-buttons">
-        <a href="https://www.media.mit.edu/projects/decentralized-ai/publications/"
-           class="hero-button">View research</a>
-        <a href="about.html" class="hero-button">Learn more →</a>
+        <a href="https://www.media.mit.edu/projects/decentralized-ai/publications/" class="hero-button">
+          View research
+        </a>
+        <a href="about.html" class="hero-button">
+          Learn more →
+        </a>
       </div>
 
       <!-- SECONDARY CONTENT SECTION -->
       <div class="content-section">
-        <div class="featured-image"
+        <div class="featured-image" 
              style="background-image: url('/MITDecAI/images/secondary-banner.png');"
              role="img"
-             aria-label="Decentralized AI Summit banner image">
+             aria-label="Decentralized AI Summit banner">
         </div>
         <h2>Join us at the Decentralized AI Summit</h2>
         <p>
