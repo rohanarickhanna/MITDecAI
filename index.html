@@ -50,7 +50,6 @@
       color: #fff;
       margin: 0;
     }
-
     /* Hamburger */
     .hamburger {
       display: none;
@@ -119,24 +118,22 @@
     }
 
     /**
-     * FEATURED IMAGES:
-     * Use aspect-ratio to let images keep their shape naturally without clipping.
-     * “background-size: contain” ensures the entire image is visible. 
-     * If you need them to *fill* instead, replace "contain" with "cover" 
-     * (but note that will crop if the aspect ratio doesn’t match).
+     * FEATURED IMAGE (replacing background-image with an actual <img>):
+     *  - .featured-image is now a wrapper
+     *  - .featured-image img has 100% width & auto height => no cropping
      */
     .featured-image {
-      display: block;
-      width: 100%;
-      aspect-ratio: 3 / 1; /* Adjust ratio to match your actual image dimension */
-      border-radius: 12px;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: contain;  /* Entire image visible, no cropping */
-      margin-bottom: 20px;       /* Some vertical spacing below */
+      margin-bottom: 20px;
       animation: fadeInImage 1.5s ease forwards;
       opacity: 0;
+      border-radius: 12px;
+      overflow: hidden; /* ensures corners are rounded for the <img> inside */
       transition: box-shadow 0.3s, border 0.3s;
+    }
+    .featured-image img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
     .featured-image:hover {
       border: 1px solid rgba(255,255,255,0.1);
@@ -277,10 +274,6 @@
       .hero-title {
         font-size: 1.5rem;
       }
-      /* Adjust ratio for smaller screens if desired */
-      .featured-image {
-        aspect-ratio: 3 / 1; /* same ratio or tweak if you want it taller on mobile */
-      }
     }
   </style>
 </head>
@@ -309,10 +302,9 @@
     <main class="main-content">
 
       <!-- HERO IMAGE -->
-      <div class="featured-image" 
-           style="background-image: url('/MITDecAI/images/banner22.png');" 
-           role="img"
-           aria-label="MIT Decentralized AI banner">
+      <div class="featured-image">
+        <img src="/MITDecAI/images/banner22.png" 
+             alt="MIT Decentralized AI banner"/>
       </div>
 
       <!-- HERO TEXT & BUTTONS -->
@@ -332,10 +324,9 @@
 
       <!-- SECONDARY CONTENT SECTION -->
       <div class="content-section">
-        <div class="featured-image" 
-             style="background-image: url('/MITDecAI/images/secondary-banner.png');"
-             role="img"
-             aria-label="Decentralized AI Summit banner">
+        <div class="featured-image">
+          <img src="/MITDecAI/images/secondary-banner.png" 
+               alt="Decentralized AI Summit banner"/>
         </div>
         <h2>Join us at the Decentralized AI Summit</h2>
         <p>
