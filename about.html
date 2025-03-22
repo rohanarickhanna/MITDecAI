@@ -20,37 +20,35 @@
       overflow-x: hidden; /* avoid horizontal scroll due to animations */
     }
 
-    /* Page Layout */
-    .page-container {
-      display: flex;
-      flex-direction: row;
-      min-height: 100vh;
-    }
-
+    /* SIDEBAR: pinned on desktop, slides on mobile */
     .sidebar {
-      background: #000;
+      position: fixed; 
+      top: 0;
+      left: 0;
       width: 280px;
+      height: 100vh;
+      background: #000;
       padding: 20px;
-      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
       animation: slideFromLeft 1s ease forwards;
-      transform: translateX(-100%);
-      opacity: 0;
-      position: relative;
+      transform: translateX(0);
+      opacity: 1;
     }
     .sidebar-header {
       display: flex;
       align-items: center;
-      justify-content: space-between; /* space for the hamburger to the right */
+      justify-content: space-between;
       margin-bottom: 30px;
     }
     .sidebar-header h2 {
       font-size: 18px;
-      font-weight: 700; /* bold title */
-      color: white; 
+      font-weight: 700;
+      color: #fff;
       margin: 0;
     }
 
-    /* Hamburger Button */
+    /* Hamburger Button (visible on mobile) */
     .hamburger {
       display: none;
       cursor: pointer;
@@ -106,31 +104,30 @@
       color: #fff;
     }
 
-    /* Main Content */
+    /* MAIN CONTENT: offset by sidebar width on desktop */
     .main-content {
-      flex: 1;
+      margin-left: 280px;
       padding: 60px;
       animation: fadeIn 1.2s ease forwards;
       opacity: 0;
       max-width: 1000px; /* optional max width for readability */
-      margin: 0 auto;    /* center on larger screens */
+      margin-right: auto; /* center on wide screens */
     }
 
-    /* Featured Image with Caption */
+    /* FEATURED IMAGE (now using an <img>) */
     .featured-image {
-      width: 100%;
-      height: 300px;
-      background: url('images/banner3.png') no-repeat center center;
-      background-size: cover;
-      border-radius: 12px;
-      display: flex;
-      align-items: flex-end; /* caption at bottom */
-      justify-content: flex-start;
       margin-bottom: 10px;
       position: relative;
+      border-radius: 12px;
+      overflow: hidden; /* ensures corners stay rounded */
       animation: fadeInImage 1.5s ease forwards;
       opacity: 0;
       transition: box-shadow 0.3s, border 0.3s;
+    }
+    .featured-image img {
+      display: block;
+      width: 100%;
+      height: auto; /* no clipping, scaled to container width */
     }
     .featured-image:hover {
       border: 1px solid rgba(255,255,255,0.1);
@@ -139,11 +136,10 @@
     .featured-caption {
       background: rgba(0, 0, 0, 0.6);
       padding: 15px 20px;
-      border-radius: 0 0 12px 12px; /* so it lines up with bottom corners */
+      border-radius: 0 0 12px 12px; /* lines up with bottom corners */
       font-size: 1rem;
       line-height: 1.5;   
       margin-bottom: 20px;
-
     }
 
     .about-title {
@@ -175,7 +171,7 @@
       margin-bottom: 10px;
     }
 
-    /* Footer */
+    /* FOOTER */
     .footer {
       text-align: center;
       color: #666;
@@ -187,7 +183,7 @@
       opacity: 0;
     }
 
-    /* Animations */
+    /* ANIMATIONS */
     @keyframes slideFromLeft {
       to {
         transform: translateX(0);
@@ -216,29 +212,40 @@
       }
     }
 
-    /* Basic Mobile Responsiveness */
+    /* Mobile (<= 768px) */
     @media (max-width: 768px) {
-      .page-container {
-        flex-direction: column;
-      }
+      /* sidebar becomes a sliding panel */
       .sidebar {
+        position: static;
         width: 100%;
-        padding-right: 50px; /* space for hamburger */
+        height: auto;
+        transform: translateX(-100%);
+        opacity: 0;
+        transition: transform 0.5s ease, opacity 0.5s ease;
       }
-      .sidebar-nav {
-        display: none; /* hidden by default on mobile */
+      .sidebar.active {
+        transform: translateX(0);
+        opacity: 1;
       }
-      .sidebar.active .sidebar-nav {
-        display: flex; /* revealed when toggled */
-      }
+      /* hamburger is visible on mobile */
       .hamburger {
         display: flex;
       }
+      /* hide nav by default on mobile */
+      .sidebar-nav {
+        display: none;
+      }
+      .sidebar.active .sidebar-nav {
+        display: flex;
+      }
+
+      /* main content no longer offset */
       .main-content {
+        margin-left: 0;
         padding: 20px;
       }
       .featured-image {
-        height: 200px; /* smaller banner on phones */
+        height: auto; /* let the <img> define its height */
       }
       .featured-caption {
         font-size: 0.9rem;
@@ -250,127 +257,129 @@
   </style>
 </head>
 <body>
-  <div class="page-container">
-    <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
-      <div class="sidebar-header">
-        <h2>MIT Decentralized AI</h2>
-        <div class="hamburger" id="hamburger">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+  
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2>MIT Decentralized AI</h2>
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
-      <nav class="sidebar-nav">
-        <!-- Route About to about.html -->
-        <a href="about.html">About</a>
-        <a href="https://www.media.mit.edu/projects/decentralized-ai/publications/">Research</a>
-        <a href="team.html">Team</a>
-        <a href="mailto:dec-ai@media.mit.edu">Contact</a>
-      </nav>
-    </aside>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="about.html">About</a>
+      <a href="https://www.media.mit.edu/projects/decentralized-ai/publications/">Research</a>
+      <a href="team.html">Team</a>
+      <a href="mailto:dec-ai@media.mit.edu">Contact</a>
+    </nav>
+  </aside>
 
-    <!-- Main Content -->
-    <main class="main-content">
-      <!-- Banner with caption -->
-      <div class="featured-image">
-      </div>
-      <div class="featured-caption">
-        <p> As AI evolves beyond screen assistants and into dimensional applications decentralization emerges as the critical factor for unlocking its full potential.</p>    
-      </div>
-      <!-- New H1 for the "About" title -->
-      <h1 class="about-title">About</h1>
+  <!-- PAGE CONTAINER (main content) -->
+  <div class="main-content">
+    
+    <!-- Banner with image -->
+    <div class="featured-image">
+      <img src="images/banner3.png" alt="MIT Decentralized AI banner" />
+    </div>
+    <div class="featured-caption">
+      <p>As AI evolves beyond screen assistants and into dimensional applications, decentralization emerges as the critical factor for unlocking its full potential.</p>
+    </div>
 
-      <!-- Introduction -->
-      <section class="content-section">
-        <h2>Introduction</h2>
-        <p>
-          The AI landscape is at a crossroads. While advances continue, concerns mount about job
-          displacement and data monopolies. Centralized models, dominated by a few large
-          companies, are reaching their limits. To unlock the true power of AI, we need a new
-          paradigm: decentralized AI.
-        </p>
-      </section>
+    <!-- About Title -->
+    <h1 class="about-title">About</h1>
 
-      <!-- Challenges of Centralized AI -->
-      <section class="content-section">
-        <h2>Challenges of Centralized AI</h2>
-        <ul>
-          <li>
-            <strong>Limited data access:</strong> Siloed data restricts AI’s potential for
-            applications like personalized healthcare and innovative supply chains.
-          </li>
-          <li>
-            <strong>Inflexible models:</strong> One-size-fits-all models struggle with
-            diverse real-world scenarios, leading to inaccurate and unfair outcomes.
-          </li>
-          <li>
-            <strong>Lack of transparency and accountability:</strong> With data and algorithms
-            hidden away, trust in AI erodes, hindering adoption and innovation.
-          </li>
-        </ul>
-      </section>
+    <!-- Introduction -->
+    <section class="content-section">
+      <h2>Introduction</h2>
+      <p>
+        The AI landscape is at a crossroads. While advances continue, concerns mount about job
+        displacement and data monopolies. Centralized models, dominated by a few large
+        companies, are reaching their limits. To unlock the true power of AI, we need a new
+        paradigm: decentralized AI.
+      </p>
+    </section>
 
-      <!-- Decentralized AI: A Vision for the Future -->
-      <section class="content-section">
-        <h2>Decentralized AI: A Vision for the Future</h2>
-        <ul>
-          <li>
-            <strong>Data markets:</strong> Secure marketplaces enable data exchange while
-            protecting privacy and ensuring fair compensation.
-          </li>
-          <li>
-            <strong>Multi-dimensional models:</strong> AI that learns from real-world experiences
-            through simulations and agent-based modeling.
-          </li>
-          <li>
-            <strong>Verifiable AI:</strong> Mechanisms like federated learning and blockchain
-            ensure responsible development and deployment of AI models.
-          </li>
-          <li>
-            <strong>Exchanges for AI solutions:</strong> Platforms where individuals and
-            businesses can access and contribute to AI solutions for diverse needs.
-          </li>
-        </ul>
-      </section>
+    <!-- Challenges of Centralized AI -->
+    <section class="content-section">
+      <h2>Challenges of Centralized AI</h2>
+      <ul>
+        <li>
+          <strong>Limited data access:</strong> Siloed data restricts AI’s potential for
+          applications like personalized healthcare and innovative supply chains.
+        </li>
+        <li>
+          <strong>Inflexible models:</strong> One-size-fits-all models struggle with
+          diverse real-world scenarios, leading to inaccurate and unfair outcomes.
+        </li>
+        <li>
+          <strong>Lack of transparency and accountability:</strong> With data and algorithms
+          hidden away, trust in AI erodes, hindering adoption and innovation.
+        </li>
+      </ul>
+    </section>
 
-      <!-- Opportunities in Decentralized AI -->
-      <section class="content-section">
-        <h2>Opportunities in Decentralized AI</h2>
-        <p>
-          <strong>Democratization of innovation:</strong> Individuals and smaller businesses
-          can participate in the AI revolution, creating valuable solutions and capturing
-          economic benefits.
-        </p>
-        <p>
-          <strong>Unleashing trillions in economic value:</strong> By addressing real-world
-          challenges in healthcare, education, and other sectors, decentralized AI can unlock
-          vast economic opportunities.
-        </p>
-        <p>
-          <strong>Building a more equitable and inclusive future:</strong> Decentralization
-          empowers individuals and helps address concerns about bias and discrimination in AI.
-        </p>
-      </section>
+    <!-- Decentralized AI: A Vision for the Future -->
+    <section class="content-section">
+      <h2>Decentralized AI: A Vision for the Future</h2>
+      <ul>
+        <li>
+          <strong>Data markets:</strong> Secure marketplaces enable data exchange while
+          protecting privacy and ensuring fair compensation.
+        </li>
+        <li>
+          <strong>Multi-dimensional models:</strong> AI that learns from real-world experiences
+          through simulations and agent-based modeling.
+        </li>
+        <li>
+          <strong>Verifiable AI:</strong> Mechanisms like federated learning and blockchain
+          ensure responsible development and deployment of AI models.
+        </li>
+        <li>
+          <strong>Exchanges for AI solutions:</strong> Platforms where individuals and
+          businesses can access and contribute to AI solutions for diverse needs.
+        </li>
+      </ul>
+    </section>
 
-      <!-- The Call to Action -->
-      <section class="content-section">
-        <h2>The Call to Action</h2>
-        <p>
-          In this pivotal moment, everyone has a role to play. Businesses must embrace
-          decentralized models, governments should foster collaborative ecosystems, and
-          individuals must become AI literate and contribute their expertise. By working together,
-          we can unlock the true potential of AI and build a more prosperous and equitable future
-          for all.
-        </p>
-        <p>
-          Reach out to us at <a href="mailto:dec-ai@media.mit.edu" style="color: #fff;">dec-ai@media.mit.edu</a>
-        </p>
-        <p>
-          Professor Ramesh Raskar spoke on this topic at EmTech Digital in May 2024.
-        </p>
-      </section>
-    </main>
+    <!-- Opportunities in Decentralized AI -->
+    <section class="content-section">
+      <h2>Opportunities in Decentralized AI</h2>
+      <p>
+        <strong>Democratization of innovation:</strong> Individuals and smaller businesses
+        can participate in the AI revolution, creating valuable solutions and capturing
+        economic benefits.
+      </p>
+      <p>
+        <strong>Unleashing trillions in economic value:</strong> By addressing real-world
+        challenges in healthcare, education, and other sectors, decentralized AI can unlock
+        vast economic opportunities.
+      </p>
+      <p>
+        <strong>Building a more equitable and inclusive future:</strong> Decentralization
+        empowers individuals and helps address concerns about bias and discrimination in AI.
+      </p>
+    </section>
+
+    <!-- The Call to Action -->
+    <section class="content-section">
+      <h2>The Call to Action</h2>
+      <p>
+        In this pivotal moment, everyone has a role to play. Businesses must embrace
+        decentralized models, governments should foster collaborative ecosystems, and
+        individuals must become AI literate and contribute their expertise. By working together,
+        we can unlock the true potential of AI and build a more prosperous and equitable future
+        for all.
+      </p>
+      <p>
+        Reach out to us at <a href="mailto:dec-ai@media.mit.edu" style="color: #fff;">dec-ai@media.mit.edu</a>
+      </p>
+      <p>
+        Professor Ramesh Raskar spoke on this topic at EmTech Digital in May 2024.
+      </p>
+    </section>
+
   </div>
 
   <!-- Footer -->
