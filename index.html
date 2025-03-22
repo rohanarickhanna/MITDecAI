@@ -116,12 +116,13 @@
       margin: 0 auto;
     }
 
-    /* FEATURED IMAGES - used for both hero + secondary images now */
+    /* FEATURED IMAGES - used for both hero & secondary images */
     .featured-image {
       width: 100%;
       height: 300px;
-      background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;    /* fills container on desktop & mobile */
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -136,13 +137,13 @@
       box-shadow: 0 0 8px rgba(255,255,255,0.2);
     }
 
-    /* HERO IMAGE: override the default background for the top banner */
+    /* HERO IMAGE: same .featured-image, different name for clarity if needed */
     .hero-image {
-      background: url('/MITDecAI/images/banner22.png') no-repeat center center;
-      background-size: contain; /* or cover, if you prefer */
+      background: url('/MITDecAI/images/banner22.png') center center no-repeat;
+      /* The above is effectively included in the inline style, so you can remove or keep. */
     }
 
-    /* TEXT & HEADINGS */
+    /* HERO TEXT & HEADINGS */
     .hero-title {
       font-size: 2rem;
       margin-top: 30px;
@@ -193,25 +194,21 @@
       box-shadow: 0 0 8px rgba(170,170,170,0.7);
     }
 
-    /**
-     * CONTENT SECTIONS:
-     * Matching the "About" page structure so headings, paragraphs, & spacing
-     * are consistent
-     */
+    /* CONTENT SECTIONS */
     .content-section {
-      margin-bottom: 40px; /* matches about.html’s .content-section margin */
+      margin-bottom: 40px;
       animation: fadeIn 1.5s ease forwards;
       animation-delay: 0.8s;
       opacity: 0;
     }
     .content-section h2 {
       font-size: 1.6rem;
-      margin-bottom: 15px; /* matches about.html’s .content-section h2 margin */
+      margin-bottom: 15px;
     }
     .content-section p {
       font-size: 1rem;
       line-height: 1.6;
-      margin-bottom: 15px; /* same as about.html paragraphs */
+      margin-bottom: 15px;
     }
 
     /* FOOTER */
@@ -278,7 +275,7 @@
         padding: 20px;
       }
       .featured-image {
-        height: 200px;
+        height: 200px; /* smaller on mobile to fit screens comfortably */
       }
       .hero-title {
         font-size: 1.5rem;
@@ -310,7 +307,11 @@
     <main class="main-content">
 
       <!-- HERO IMAGE -->
-      <div class="featured-image hero-image" role="img" aria-label="MIT Decentralized AI banner image"></div>
+      <div class="featured-image hero-image"
+           style="background-image: url('/MITDecAI/images/banner22.png');"
+           role="img"
+           aria-label="MIT Decentralized AI banner image">
+      </div>
 
       <!-- HERO TEXT & BUTTONS -->
       <h1 class="hero-title">Pioneering research on Decentralized AI</h1>
@@ -319,19 +320,17 @@
         and security—ensuring that the benefits of AI reach all of humanity.
       </p>
       <div class="hero-buttons">
-        <a href="https://www.media.mit.edu/projects/decentralized-ai/publications/" 
+        <a href="https://www.media.mit.edu/projects/decentralized-ai/publications/"
            class="hero-button">View research</a>
         <a href="about.html" class="hero-button">Learn more →</a>
       </div>
 
       <!-- SECONDARY CONTENT SECTION -->
-      <!-- Renamed to .content-section and using the same spacing rules as About -->
       <div class="content-section">
-        <!-- Use the same .featured-image class for consistent styling/hover -->
-        <div class="featured-image" 
-             style="background: url('/MITDecAI/images/secondary-banner.png') center center no-repeat; 
-                    background-size: contain;"
-             role="img" aria-label="Decentralized AI Summit banner image">
+        <div class="featured-image"
+             style="background-image: url('/MITDecAI/images/secondary-banner.png');"
+             role="img"
+             aria-label="Decentralized AI Summit banner image">
         </div>
         <h2>Join us at the Decentralized AI Summit</h2>
         <p>
