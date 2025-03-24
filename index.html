@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MIT Decentralized AI – Home</title>
+  <title>MIT Decentralized AI – Summit</title>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Neue+Haas+Grotesk:wght@400;700&display=swap");
 
@@ -17,11 +17,10 @@
       background: #000;
       color: #fff;
       font-family: "Neue Haas Grotesk", sans-serif;
-      overflow-x: hidden;
+      overflow-x: hidden; /* avoid horizontal scroll from animations */
     }
-
-    /* SIDEBAR (pinned/fixed on desktop) */
-    .sidebar {
+ /* SIDEBAR (pinned/fixed on desktop) */
+ .sidebar {
       position: fixed;        /* pinned on desktop */
       top: 0;
       left: 0;
@@ -83,7 +82,7 @@
       color: #fff;
     }
 
-    /* HAMBURGER (only visible on mobile) */
+    /* HAMBURGER (shown on mobile only) */
     .hamburger {
       display: none;
       cursor: pointer;
@@ -113,84 +112,44 @@
       transform: translateY(-7px) rotate(-45deg);
     }
 
-    /* MAIN CONTENT: margin-left for desktop to avoid overlapping with pinned sidebar */
+    /* MAIN CONTENT: offset to the right by sidebar width on desktop */
     .main-content {
-      margin-left: 280px;      /* same as sidebar width */
+      margin-left: 280px;
       padding: 60px;
       animation: fadeIn 1.2s ease forwards;
       opacity: 0;
-      max-width: 1000px;
-      margin-top: 0;
+      max-width: 1000px; /* center on large screens if you like */
+      margin-right: auto;
     }
 
-    /* FEATURED IMAGES */
+    /* FEATURED IMAGE WRAPPER */
     .featured-image {
       margin-bottom: 20px;
       animation: fadeInImage 1.5s ease forwards;
       opacity: 0;
       border-radius: 12px;
-      overflow: hidden; /* ensures corners are rounded */
+      overflow: hidden; /* ensures the <img> has rounded corners */
       transition: box-shadow 0.3s, border 0.3s;
     }
     .featured-image img {
-      display: block;
       width: 100%;
-      height: auto; /* ensures full image displays without clipping */
+      height: auto;
+      display: block;
     }
     .featured-image:hover {
       border: 1px solid rgba(255,255,255,0.1);
       box-shadow: 0 0 8px rgba(255,255,255,0.2);
     }
 
-    /* TEXT & HEADINGS */
-    .hero-title {
+    /* HEADINGS & TEXT */
+    .page-title {
       font-size: 2rem;
       margin-top: 30px;
       animation: slideUp 1s ease forwards;
       animation-delay: 0.2s;
       transform: translateY(20px);
       opacity: 0;
-      margin-bottom: 10px;
-    }
-    .hero-subtitle {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      animation: slideUp 1s ease forwards;
-      animation-delay: 0.4s;
-      transform: translateY(20px);
-      opacity: 0;
       margin-bottom: 20px;
-    }
-
-    /* HERO BUTTONS */
-    .hero-buttons {
-      animation: slideUp 1s ease forwards;
-      animation-delay: 0.6s;
-      transform: translateY(20px);
-      opacity: 0;
-      margin-bottom: 40px;
-    }
-    .hero-button {
-      display: inline-block;
-      background: #222;
-      color: #fff;
-      border: 1px solid #444;
-      padding: 12px 24px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-right: 10px;
-      border-radius: 6px;
-      text-decoration: none;
-      transition:
-        background 0.3s,
-        box-shadow 0.3s,
-        border 0.3s;
-    }
-    .hero-button:hover {
-      border: 1px solid transparent;
-      background: linear-gradient(to right, #333, #555) padding-box,
-                  linear-gradient(to right, #666, #999) border-box;
-      box-shadow: 0 0 8px rgba(170,170,170,0.7);
     }
 
     /* CONTENT SECTIONS */
@@ -208,6 +167,15 @@
       font-size: 1rem;
       line-height: 1.6;
       margin-bottom: 15px;
+    }
+    .content-section ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+    .content-section li {
+      margin-bottom: 10px;
     }
 
     /* FOOTER */
@@ -251,11 +219,10 @@
       }
     }
 
-    /* Mobile Styles <= 768px */
+    /* MOBILE STYLES */
     @media (max-width: 768px) {
-      /* Instead of pinned, the sidebar slides from left */
       .sidebar {
-        position: static;    /* no longer fixed on mobile */
+        position: static;
         width: 100%;
         height: auto;
         transform: translateX(-100%);
@@ -266,27 +233,20 @@
         transform: translateX(0);
         opacity: 1;
       }
-      .sidebar-content {
-        justify-content: flex-start;
-      }
-
       .hamburger {
-        display: flex;  /* show hamburger on mobile */
+        display: flex; /* show hamburger on mobile */
       }
-
       .sidebar-nav {
-        display: none;  /* hidden by default */
+        display: none; /* hidden by default on mobile */
       }
       .sidebar.active .sidebar-nav {
-        display: flex;  /* visible when toggled */
+        display: flex; /* shown when toggled */
       }
-
-      /* main content resets margin so it’s full width */
       .main-content {
         margin-left: 0;
         padding: 20px;
       }
-      .hero-title {
+      .page-title {
         font-size: 1.5rem;
       }
     }
@@ -304,8 +264,6 @@
         <div></div>
       </div>
     </div>
-
-    <!-- Centered Nav in .sidebar-content -->
     <div class="sidebar-content">
       <nav class="sidebar-nav">
         <a href="index.html">Home</a>
@@ -319,41 +277,112 @@
 
   <!-- MAIN CONTENT -->
   <main class="main-content">
-    <!-- HERO IMAGE -->
+    <!-- SUMMIT IMAGE (optional) -->
     <div class="featured-image">
-      <img src="images/banner22.png" alt="MIT Decentralized AI banner" />
+      <!-- Replace with any summit banner image you have -->
+      <img src="images/summit.png" alt="MIT Decentralized AI Summit Banner" />
     </div>
 
-    <!-- HERO TEXT & BUTTONS -->
-    <h1 class="hero-title">Pioneering research on Decentralized AI</h1>
-    <p class="hero-subtitle">
-      We advance AI research by harnessing decentralization, privacy,
-      and security—ensuring that the benefits of AI reach all of humanity.
-    </p>
-    <div class="hero-buttons">
-      <a href="https://www.media.mit.edu/projects/decentralized-ai/publications/" class="hero-button">
-        View research
-      </a>
-      <a href="about.html" class="hero-button">
-        Learn more →
-      </a>
-    </div>
+    <!-- TITLE -->
+    <h1 class="page-title">MIT Decentralized AI Summit</h1>
+    
 
-    <!-- SECONDARY CONTENT SECTION -->
-    <div class="content-section">
-      <div class="featured-image">
-        <img src="images/secondary-banner.png" alt="Decentralized AI Summit banner" />
-      </div>
-      <h2>Join us at the Decentralized AI Summit</h2>
+    <!-- SUMMIT DETAILS -->
+    <section class="content-section">
+      <h2>Event Details</h2>
       <p>
-        Be part of groundbreaking discussions and networking opportunities.
-        We invite early-stage startups to
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScxVf-_jnXbhLIBn_cEbejIkEtDfWpD57AfxALi2s-CtWjR6w/viewform">
-          apply now
-        </a>.
-        Stay tuned for approximate summit schedule and further details.
+        <strong>Date:</strong> April 14 - 16, 2024  
+        <br><strong>Location:</strong> MIT Media Lab<br>
+        75 Amherst Street, Cambridge, MA
       </p>
-    </div>
+      <p>
+        <em>The Internet of AIs with Edge Compute, Siloed Data, Agents, and Data Markets</em>
+      </p>
+      <p>
+        In today's AI landscape, data, computation, and governance are centralized. 
+        Decentralized AI offers a promising alternative leveraging intelligent, 
+        network-based approaches to improve collaboration, incentives, and 
+        innovation at the edges. It offers a promising alternative enabling 
+        collaboration between distrusted, disincentivized, and disinterested entities.
+      </p>
+      <p>
+        AI has made remarkable strides, showcasing its vast ability to tackle 
+        large-scale challenges. These advancements open new possibilities 
+        for areas where data and knowledge are distributed across different 
+        organizations and regions—such as healthcare, climate science, and 
+        supply chain management. We highlight five essential technical opportunities:
+        (1) enhancing privacy, (2) ensuring verifiability, (3) aligning incentives, 
+        (4) enabling orchestration, and (5) improving crowdUX. By addressing 
+        these opportunities, diverse entities can collaborate to solve global 
+        issues while still achieving their local goals. This vision of Decentralized AI 
+        encourages further dialogue and research toward a decentralized, inclusive, 
+        and resilient AI future.
+      </p>
+    </section>
+
+      <!-- Program Outline (updated dates) -->
+  
+      <section class="content-section">
+        <h2>Program</h2>
+        <p><strong>Mon, April 14 (MIT DecAI Summit)</strong></p>
+        <ul style="list-style-type: none; padding: 0; margin: 0;">
+          <li style="margin-left: 20px;">DecAI Startup Workshop</li>
+          <li style="margin-left: 20px;">Invitational DecAI dinner sponsored by VANA</li>
+        </ul>
+        <p><strong>Tue, April 15 (MIT DecAI Summit at Imagination in Action)</strong></p>
+        <ul style="list-style-type: none; padding: 0; margin: 0;">
+          <li style="margin-left: 20px;">Keynote Talks</li>
+          <li style="margin-left: 20px;">DecAI Investor Panel</li>
+          <li style="margin-left: 20px;">Project Showcase</li>
+          <li style="margin-left: 20px;">Agentic Futures</li>
+        </ul>
+        <p><strong>Wed, April 16 (MIT DecAI Summit)</strong></p>
+        <ul style="list-style-type: none; padding: 0; margin: 0;">
+          <li style="margin-left: 20px;">MIT DecAI Working session for Working Groups</li>
+        </ul>
+      </section>
+
+    <!-- MIT Decentralized AI Research and Venture Hub Call -->
+    <section class="content-section">
+      <h2>Call for Research Projects &amp; Ventures</h2>
+      <p>
+        MIT Decentralized AI Research and Venture Hub welcomes research projects, 
+        nonprofits, and ventures to participate in the Decentralized AI Summit Showcase. 
+        Present on the main stage and showcase your projects during the networking session. 
+        Limited opportunities are available for panel discussions. 
+      </p>
+    </section>
+
+<!-- Past Event Recap -->
+<section class="content-section">
+    <h2>Past Events</h2>
+    <p>
+      <strong>Previous Event:</strong> MIT Decentralized AI Summit on October 11, 2024
+      focused on the potential of decentralized AI to transform
+      various sectors. The summit addressed the limitations of centralized AI systems,
+      particularly in areas where data and knowledge are distributed across organizations
+      and regions, such as healthcare, climate science, and supply chain management.
+      Key discussions highlighted five technical opportunities: enhancing privacy,
+      ensuring verifiability, aligning incentives, enabling orchestration, and improving
+      user experience. By addressing these areas, the summit emphasized how diverse entities
+      can collaborate on global challenges while achieving their local objectives,
+      promoting a decentralized, inclusive, and resilient AI future. The event also
+      featured a project showcase, where participants presented their ventures, fostering
+      networking and collaboration among researchers, entrepreneurs, and investors.
+    </p>
+  </section>
+
+    <!-- Notice for MIT Affiliates -->
+    <section class="content-section">
+      <h2>Important Notice (MIT Affiliates)</h2>
+      <p>
+        If you are presenting research findings that haven’t been made public, 
+        please ensure you have approval from your advisor or principal investigator, 
+        and consult your institution’s technology licensing office (for MIT folks, that’s the TLO). 
+        This prevents compromising future patent filings or violating sponsor agreements.
+      </p>
+    </section>
+
   </main>
 
   <!-- FOOTER -->
