@@ -19,9 +19,10 @@
       font-family: "Neue Haas Grotesk", sans-serif;
       overflow-x: hidden; /* avoid horizontal scroll from animations */
     }
- /* SIDEBAR (pinned/fixed on desktop) */
- .sidebar {
-      position: fixed;        /* pinned on desktop */
+
+    /* SIDEBAR (pinned/fixed on desktop) */
+    .sidebar {
+      position: fixed; /* pinned on desktop */
       top: 0;
       left: 0;
       width: 280px;
@@ -152,20 +153,16 @@
       aspect-ratio: 16 / 9;
       background-color: #000; /* fallback color */
     }
-
     .featured-video video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
-
     .featured-video:hover {
       border: 1px solid rgba(255,255,255,0.1);
       box-shadow: 0 0 8px rgba(255,255,255,0.2);
     }
-
-    /* Fade In Animation */
     @keyframes fadeInVideo {
       to {
         opacity: 1;
@@ -209,35 +206,38 @@
       margin-bottom: 10px;
     }
 
-
+    /* BUTTON STYLES UPDATED */
     .button-row {
-    display: flex;
-    gap: 20px;
-    margin-top: 20px;
-  }
-  .button-row a {
-    display: inline-block;
-    background: #222; /* darker background to start */
-    color: #fff;
-    font-size: 1.2rem; /* larger text */
-    font-weight: 700;  /* bolder text */
-    padding: 12px 24px; /* more padding */
-    border-radius: 6px;
-    text-decoration: none;
-    transition:
-      background 0.3s,
-      padding-left 0.3s,
-      box-shadow 0.3s,
-      border 0.3s;
-    border: 1px solid transparent;
-  }
-  .button-row a:hover {
-    background: #222;
-    padding-left: 28px; /* shift left on hover, like the sidebar effect */
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 8px rgba(255,255,255,0.2);
-    color: #fff;
-  }
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+      flex-wrap: wrap; /* allows buttons to wrap on narrow screens */
+    }
+    .button-row a {
+      display: inline-block;
+      /* Slightly more prominent background and size */
+      background: #444;
+      color: #fff;
+      font-size: 1.3rem; /* increased */
+      font-weight: 700;
+      padding: 12px 28px; /* more padding */
+      border-radius: 6px;
+      text-decoration: none;
+      transition:
+        background 0.3s,
+        padding-left 0.3s,
+        box-shadow 0.3s,
+        border 0.3s;
+      border: 1px solid #666;
+    }
+    .button-row a:hover {
+      background: #333;
+      padding-left: 34px; /* a little ‘slide’ effect on hover */
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 8px rgba(255,255,255,0.4);
+      color: #fff;
+    }
+
     /* FOOTER */
     .footer {
       text-align: center;
@@ -336,18 +336,16 @@
 
   <!-- MAIN CONTENT -->
   <main class="main-content">
-    <!-- SUMMIT IMAGE (optional) -->
- <!-- FEATURED VIDEO WRAPPER -->
+    <!-- FEATURED VIDEO WRAPPER -->
     <div class="featured-video">
       <video autoplay loop muted playsinline>
         <source src="videos/summit.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-    </div>  
+    </div>
 
     <!-- TITLE -->
     <h1 class="page-title">MIT Decentralized AI Summit</h1>
-    
 
     <!-- SUMMIT DETAILS -->
     <section class="content-section">
@@ -357,7 +355,7 @@
         <br><strong>Location:</strong> MIT Media Lab<br>
         75 Amherst Street, Cambridge, MA
       </p>
-     
+
       <p>
         <em>The Internet of AIs with Edge Compute, Siloed Data, Agents, and Data Markets</em>
       </p>
@@ -382,6 +380,7 @@
         and resilient AI future.
       </p>
 
+      <!-- BUTTONS -->
       <div class="button-row">
         <a href="https://lu.ma/MIT-DecAI-Summit" target="_blank">
           Register as an attendee
@@ -389,231 +388,231 @@
         <a href="https://forms.gle/tp5JSDYPdzV54pH89" target="_blank">
           Apply to present as a startup
         </a>
+        <!-- NEW HACKATHON BUTTON -->
+        <a href="https://lu.ma/jl8fttnt" target="_blank">
+          April 6th Hackathon
+        </a>
       </div>
-
     </section>
 
-      <!-- Program Outline (updated dates) -->
-          <!-- Responsive Table for "MIT Internet of AI Agents" -->
-        <div style="overflow-x: auto; margin-top: 2rem;">
-          <table style="width:100%; border-collapse: collapse; font-family: sans-serif; color: #fff;">
-            <!-- Table Head -->
-            <thead>
-              <tr style="background-color: #222;">
-                <th style="padding: 12px; text-align: left; border-bottom: 1px solid #444;">Speaker</th>
-                <th style="padding: 12px; text-align: left; border-bottom: 1px solid #444;">Organization</th>
-                <th style="padding: 12px; text-align: left; border-bottom: 1px solid #444;">Topic / Focus</th>
-              </tr>
-            </thead>
+    <!-- Program Outline (updated dates) -->
+    <div style="overflow-x: auto; margin-top: 2rem;">
+      <table style="width:100%; border-collapse: collapse; font-family: sans-serif; color: #fff;">
+        <!-- Table Head -->
+        <thead>
+          <tr style="background-color: #222;">
+            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #444;">Speaker</th>
+            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #444;">Organization</th>
+            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #444;">Topic / Focus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- SECTION: Foundations -->
+          <tr>
+            <td colspan="3" 
+                style="padding: 12px; 
+                      background-color: #444; 
+                      font-weight: bold; 
+                      border-bottom: 2px solid #666;">
+              Foundations
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Ramesh Raskar</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">MIT Media Lab</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Internet of AI Agents</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Anil Sharma</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">TCS</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Innovation</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Anna Kazlauskas</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Vana</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Open Protocol for Data Sovereignty</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Sarmad Quadri</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Last Mile AI</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Enterprise-Grade LLM Evaluation</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Aditya Challapally</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Microsoft</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Edge AI</td>
+          </tr>
 
-            <tbody>
+          <!-- SECTION: Investability - startups -->
+          <tr>
+            <td colspan="3" 
+                style="padding: 12px; 
+                      background-color: #444; 
+                      font-weight: bold; 
+                      border-bottom: 2px solid #666;">
+              Investability – Startups
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Einar Braathen</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">CoinFund</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;"></td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Alpen Sheth</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Borderless Capital</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;"></td>
+          </tr>
 
-              <!-- SECTION: Foundations -->
-              <tr>
-                <td colspan="3" 
-                    style="padding: 12px; 
-                          background-color: #444; 
-                          font-weight: bold; 
-                          border-bottom: 2px solid #666;">
-                  Foundations
-                </td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Ramesh Raskar</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">MIT Media Lab</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Internet of AI Agents</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Anil Sharma</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">TCS</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Innovation</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Anna Kazlauskas</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Vana</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Open Protocol for Data Sovereignty</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Sarmad Quadri</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Last Mile AI</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Enterprise-Grade LLM Evaluation</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Aditya Challapally</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Microsoft</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Edge AI</td>
-              </tr>
+          <!-- SECTION: Investability - Enterprise Adoption -->
+          <tr>
+            <td colspan="3" 
+                style="padding: 12px; 
+                      background-color: #444; 
+                      font-weight: bold; 
+                      border-bottom: 2px solid #666;">
+              Investability – Enterprise Adoption
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Mark Weber</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Techtonic VC</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;"></td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Rajeev Wadhwani</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">HCL</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;"></td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Shyam Nagarajan</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Hedera</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;"></td>
+          </tr>
 
-              <!-- SECTION: Investability - startups -->
-              <tr>
-                <td colspan="3" 
-                    style="padding: 12px; 
-                          background-color: #444; 
-                          font-weight: bold; 
-                          border-bottom: 2px solid #666;">
-                  Investability – Startups
-                </td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Einar Braathen</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">CoinFund</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;"></td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Alpen Sheth</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Borderless Capital</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;"></td>
-              </tr>
+          <!-- SECTION: Agentic Futures (selected projects) -->
+          <tr>
+            <td colspan="3" 
+                style="padding: 12px; 
+                      background-color: #444; 
+                      font-weight: bold; 
+                      border-bottom: 2px solid #666;">
+              Agentic Futures (selected projects)
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Chris Pease</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">AgentiCorp</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Multi-Agent Systems – next 12 months</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Abhishek Singh</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">MIT Media Lab</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Nanda Protocol</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Andrea Ridi</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">ScaleUp Labs</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Agent Commerce</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Marco Cello</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Meshify</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Agents for SME operations</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Gabriela Torres</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Sundai</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">A2A payments (Radius x Sundai)</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Raghu Bala</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Synergetics</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Agent Registries</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Peeyush Aggarwal</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Deloitte</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Data across silos</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">William Lindskog-Münzing</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Flower Labs</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Federated Learning</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Cameron Dennis</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">NEAR AI</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Private Agent Cloud</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Vlad Larin</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Fortytwo</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Planetary-scale intelligence</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">John Donaghy</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Gensyn</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Network Protocol</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Sharan Jammanahalli Mahesh</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Lumif.ai</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Open Infrastructure</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Phil McMannis</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Beacon Protocol</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Private Data Networks</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Richard Blythman</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Naptha</td>
+            <td style="padding: 8px; border-bottom: 1px solid #333;">Framework for multi-agent system</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+    </div>
 
-              <!-- SECTION: Investability - Enterprise Adoption -->
-              <tr>
-                <td colspan="3" 
-                    style="padding: 12px; 
-                          background-color: #444; 
-                          font-weight: bold; 
-                          border-bottom: 2px solid #666;">
-                  Investability – Enterprise Adoption
-                </td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Mark Weber</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Techtonic VC</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;"></td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Rajeev Wadhwani</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">HCL</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;"></td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Shyam Nagarajan</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Hedera</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;"></td>
-              </tr>
+    <section class="content-section">
+      <h2>Program</h2>
+      <p><strong>Mon, April 14 (MIT DecAI Summit)</strong></p>
+      <ul style="list-style-type: none; padding: 0; margin: 0;">
+        <li style="margin-left: 20px;">DecAI Startup Workshop</li>
+        <li style="margin-left: 20px;">Invitational DecAI dinner sponsored by VANA</li>
+      </ul>
+      <p><strong>Tue, April 15 (MIT DecAI Summit at Imagination in Action)</strong></p>
+      <ul style="list-style-type: none; padding: 0; margin: 0;">
+        <li style="margin-left: 20px;">Keynote Talks</li>
+        <li style="margin-left: 20px;">DecAI Investor Panel</li>
+        <li style="margin-left: 20px;">Project Showcase</li>
+        <li style="margin-left: 20px;">Agentic Futures</li>
+      </ul>
+      <p><strong>Wed, April 16 (MIT DecAI Summit)</strong></p>
+      <ul style="list-style-type: none; padding: 0; margin: 0;">
+        <li style="margin-left: 20px;">MIT DecAI Working session for Working Groups</li>
+      </ul>
+    </section>
 
-              <!-- SECTION: Agentic Futures (selected projects) -->
-              <tr>
-                <td colspan="3" 
-                    style="padding: 12px; 
-                          background-color: #444; 
-                          font-weight: bold; 
-                          border-bottom: 2px solid #666;">
-                  Agentic Futures (selected projects)
-                </td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Chris Pease</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">AgentiCorp</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Multi-Agent Systems – next 12 months</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Abhishek Singh</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">MIT Media Lab</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Nanda Protocol</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Andrea Ridi</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">ScaleUp Labs</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Agent Commerce</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Marco Cello</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Meshify</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Agents for SME operations</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Gabriela Torres</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Sundai</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">A2A payments (Radius x Sundai)</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Raghu Bala</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Synergetics</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Agent Registries</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Peeyush Aggarwal</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Deloitte</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Data across silos</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">William Lindskog-Münzing</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Flower Labs</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Federated Learning</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Cameron Dennis</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">NEAR AI</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Private Agent Cloud</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Vlad Larin</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Fortytwo</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Planetary-scale intelligence</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">John Donaghy</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Gensyn</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Network Protocol</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Sharan Jammanahalli Mahesh</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Lumif.ai</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Open Infrastructure</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Phil McMannis</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Beacon Protocol</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Private Data Networks</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Richard Blythman</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Naptha</td>
-                <td style="padding: 8px; border-bottom: 1px solid #333;">Framework for multi-agent system</td>
-              </tr>
-            </tbody>
-          </table>
-          <br>
-        </div>
-
-      <section class="content-section">
-        <h2>Program</h2>
-        <p><strong>Mon, April 14 (MIT DecAI Summit)</strong></p>
-        <ul style="list-style-type: none; padding: 0; margin: 0;">
-          <li style="margin-left: 20px;">DecAI Startup Workshop</li>
-          <li style="margin-left: 20px;">Invitational DecAI dinner sponsored by VANA</li>
-        </ul>
-        <p><strong>Tue, April 15 (MIT DecAI Summit at Imagination in Action)</strong></p>
-        <ul style="list-style-type: none; padding: 0; margin: 0;">
-          <li style="margin-left: 20px;">Keynote Talks</li>
-          <li style="margin-left: 20px;">DecAI Investor Panel</li>
-          <li style="margin-left: 20px;">Project Showcase</li>
-          <li style="margin-left: 20px;">Agentic Futures</li>
-        </ul>
-        <p><strong>Wed, April 16 (MIT DecAI Summit)</strong></p>
-        <ul style="list-style-type: none; padding: 0; margin: 0;">
-          <li style="margin-left: 20px;">MIT DecAI Working session for Working Groups</li>
-        </ul>
-      </section>
-
-<!-- Past Event Recap -->
-<section class="content-section">
-    <h2>Past Summit</h2>
-    <p>
-      <strong></strong> The MIT Decentralized AI Summit on October 11, 2024
-      focused on the potential of decentralized AI to transform
-      various sectors. The summit addressed the limitations of centralized AI systems,
-      particularly in areas where data and knowledge are distributed across organizations
-      and regions, such as healthcare, climate science, and supply chain management.
-      Key discussions highlighted five technical opportunities: enhancing privacy,
-      ensuring verifiability, aligning incentives, enabling orchestration, and improving
-      user experience. By addressing these areas, the summit emphasized how diverse entities
-      can collaborate on global challenges while achieving their local objectives,
-      promoting a decentralized, inclusive, and resilient AI future. The event also
-      featured a project showcase, where participants presented their ventures, fostering
-      networking and collaboration among researchers, entrepreneurs, and investors.
-    </p>
-  </section>
+    <!-- Past Event Recap -->
+    <section class="content-section">
+      <h2>Past Summit</h2>
+      <p>
+        The MIT Decentralized AI Summit on October 11, 2024
+        focused on the potential of decentralized AI to transform
+        various sectors. The summit addressed the limitations of centralized AI systems,
+        particularly in areas where data and knowledge are distributed across organizations
+        and regions, such as healthcare, climate science, and supply chain management.
+        Key discussions highlighted five technical opportunities: enhancing privacy,
+        ensuring verifiability, aligning incentives, enabling orchestration, and improving
+        user experience. By addressing these areas, the summit emphasized how diverse entities
+        can collaborate on global challenges while achieving their local objectives,
+        promoting a decentralized, inclusive, and resilient AI future. The event also
+        featured a project showcase, where participants presented their ventures, fostering
+        networking and collaboration among researchers, entrepreneurs, and investors.
+      </p>
+    </section>
 
     <!-- Notice for MIT Affiliates -->
     <section class="content-section">
