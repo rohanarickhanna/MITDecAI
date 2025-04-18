@@ -3,28 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <!-- Basic Description for Search Engines -->
-    <meta name="description" content="Join us at the MIT Decentralized AI Summit (April 14-16, 2025) to explore how edge computing, siloed data, and network-based approaches are shaping the future of AI.">
-
-    <!-- Open Graph / LinkedIn / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mitdecai.org/">
-    <meta property="og:title" content="MIT Decentralized AI">
-    <meta property="og:description" content="Explore the Internet of AI Agents at the MIT Decentralized AI Summit: privacy, verifiability, orchestration, and new paths to innovation.">
-    <meta property="og:image" content="images/secondary-banner.png">
-  
-    <!-- Twitter (optional) -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="MIT Decentralized AI – Summit">
-    <meta name="twitter:description" content="Discover decentralized AI innovations at MIT, featuring leading experts, edge compute, data sovereignty, and more.">
-    <meta name="twitter:image" content="images/secondary-banner.png">
-  
-  <title>MIT Decentralized AI – Summit</title>
+  <title>MIT Decentralized AI – Home</title>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Neue+Haas+Grotesk:wght@400;700&display=swap");
 
-
-    
     /* Reset & Base Styles */
     * {
       margin: 0;
@@ -35,12 +17,12 @@
       background: #000;
       color: #fff;
       font-family: "Neue Haas Grotesk", sans-serif;
-      overflow-x: hidden; /* avoid horizontal scroll from animations */
+      overflow-x: hidden;
     }
 
     /* SIDEBAR (pinned/fixed on desktop) */
     .sidebar {
-      position: fixed; /* pinned on desktop */
+      position: fixed;        /* pinned on desktop */
       top: 0;
       left: 0;
       width: 280px;
@@ -101,7 +83,7 @@
       color: #fff;
     }
 
-    /* HAMBURGER (shown on mobile only) */
+    /* HAMBURGER (only visible on mobile) */
     .hamburger {
       display: none;
       cursor: pointer;
@@ -131,68 +113,84 @@
       transform: translateY(-7px) rotate(-45deg);
     }
 
-    /* MAIN CONTENT: offset to the right by sidebar width on desktop */
+    /* MAIN CONTENT: margin-left for desktop to avoid overlapping with pinned sidebar */
     .main-content {
-      margin-left: 280px;
+      margin-left: 280px;      /* same as sidebar width */
       padding: 60px;
       animation: fadeIn 1.2s ease forwards;
       opacity: 0;
-      max-width: 1000px; /* center on large screens if you like */
-      margin-right: auto;
+      max-width: 1000px;
+      margin-top: 0;
     }
 
-    /* FEATURED IMAGE WRAPPER */
+    /* FEATURED IMAGES */
     .featured-image {
       margin-bottom: 20px;
       animation: fadeInImage 1.5s ease forwards;
       opacity: 0;
       border-radius: 12px;
-      overflow: hidden; /* ensures the <img> has rounded corners */
+      overflow: hidden; /* ensures corners are rounded */
       transition: box-shadow 0.3s, border 0.3s;
     }
     .featured-image img {
-      width: 100%;
-      height: auto;
       display: block;
+      width: 100%;
+      height: auto; /* ensures full image displays without clipping */
     }
     .featured-image:hover {
       border: 1px solid rgba(255,255,255,0.1);
       box-shadow: 0 0 8px rgba(255,255,255,0.2);
     }
 
-    /* FEATURED VIDEO WRAPPER */
-    .featured-video {
-      margin-bottom: 32px;
-      animation: fadeInVideo 1.5s ease forwards;
-      opacity: 0;
-      border-radius: 12px;
-      overflow: hidden;
-      transition: box-shadow 0.3s, border 0.3s;
-      aspect-ratio: 16 / 9;
-      background-color: #000; /* fallback color */
-    }
-    .featured-video video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    @keyframes fadeInVideo {
-      to {
-        opacity: 1;
-      }
-    }
-
-    /* HEADINGS & TEXT */
-    .page-title {
+    /* TEXT & HEADINGS */
+    .hero-title {
       font-size: 2rem;
       margin-top: 30px;
       animation: slideUp 1s ease forwards;
       animation-delay: 0.2s;
       transform: translateY(20px);
       opacity: 0;
+      margin-bottom: 10px;
+    }
+    .hero-subtitle {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      animation: slideUp 1s ease forwards;
+      animation-delay: 0.4s;
+      transform: translateY(20px);
+      opacity: 0;
       margin-bottom: 20px;
+    }
+
+    /* HERO BUTTONS */
+    .hero-buttons {
+      animation: slideUp 1s ease forwards;
+      animation-delay: 0.6s;
+      transform: translateY(20px);
+      opacity: 0;
+      margin-bottom: 40px;
+    }
+    .hero-button {
+      display: inline-block;
+      background: #222;
+      color: #fff;
+      border: 1px solid #444;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-right: 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition:
+        background 0.3s,
+        box-shadow 0.3s,
+        border 0.3s;
+    }
+    .hero-button:hover {
+      border: 1px solid transparent;
+      background: linear-gradient(to right, #333, #555) padding-box,
+                  linear-gradient(to right, #666, #999) border-box;
+      box-shadow: 0 0 8px rgba(170,170,170,0.7);
     }
 
     /* CONTENT SECTIONS */
@@ -210,47 +208,6 @@
       font-size: 1rem;
       line-height: 1.6;
       margin-bottom: 15px;
-    }
-    .content-section ul {
-      list-style-type: disc;
-      padding-left: 20px;
-      margin-bottom: 15px;
-      line-height: 1.6;
-    }
-    .content-section li {
-      margin-bottom: 10px;
-    }
-
-    /* BUTTON STYLES UPDATED */
-    .button-row {
-      display: flex;
-      gap: 20px;
-      margin-top: 20px;
-      flex-wrap: wrap; /* allows buttons to wrap on narrow screens */
-    }
-    .button-row a {
-      display: inline-block;
-      /* Slightly more prominent background and size */
-      background: #444;
-      color: #fff;
-      font-size: 1.3rem; /* increased */
-      font-weight: 700;
-      padding: 12px 28px; /* more padding */
-      border-radius: 6px;
-      text-decoration: none;
-      transition:
-        background 0.3s,
-        padding-left 0.3s,
-        box-shadow 0.3s,
-        border 0.3s;
-      border: 1px solid #666;
-    }
-    .button-row a:hover {
-      background: #333;
-      padding-left: 34px; /* a little ‘slide’ effect on hover */
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 0 8px rgba(255,255,255,0.4);
-      color: #fff;
     }
 
     /* FOOTER */
@@ -294,10 +251,11 @@
       }
     }
 
-    /* MOBILE STYLES */
+    /* Mobile Styles <= 768px */
     @media (max-width: 768px) {
+      /* Instead of pinned, the sidebar slides from left */
       .sidebar {
-        position: static;
+        position: static;    /* no longer fixed on mobile */
         width: 100%;
         height: auto;
         transform: translateX(-100%);
@@ -308,20 +266,27 @@
         transform: translateX(0);
         opacity: 1;
       }
-      .hamburger {
-        display: flex; /* show hamburger on mobile */
+      .sidebar-content {
+        justify-content: flex-start;
       }
+
+      .hamburger {
+        display: flex;  /* show hamburger on mobile */
+      }
+
       .sidebar-nav {
-        display: none; /* hidden by default on mobile */
+        display: none;  /* hidden by default */
       }
       .sidebar.active .sidebar-nav {
-        display: flex; /* shown when toggled */
+        display: flex;  /* visible when toggled */
       }
+
+      /* main content resets margin so it’s full width */
       .main-content {
         margin-left: 0;
         padding: 20px;
       }
-      .page-title {
+      .hero-title {
         font-size: 1.5rem;
       }
     }
@@ -339,11 +304,14 @@
         <div></div>
       </div>
     </div>
+
+    <!-- Centered Nav in .sidebar-content -->
     <div class="sidebar-content">
       <nav class="sidebar-nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="https://www.media.mit.edu/projects/decentralized-ai/publications/">Research</a>
+        <a href="summit.html">Summit</a>
         <a href="mailto:dec-ai@media.mit.edu">Contact</a>
       </nav>
     </div>
@@ -351,275 +319,34 @@
 
   <!-- MAIN CONTENT -->
   <main class="main-content">
-    <!-- FEATURED VIDEO WRAPPER -->
-    <div class="featured-video">
-      <video autoplay loop muted playsinline>
-        <source src="videos/summit.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+    <!-- HERO IMAGE -->
+    <div class="featured-image">
+      <img src="images/banner22.png" alt="MIT Decentralized AI banner" />
     </div>
 
-    <!-- TITLE -->
-    <h1 class="page-title">MIT Decentralized AI Summit</h1>
-    <section class="content-section">
-      <h2>Program</h2>
-      <p><strong>Mon, April 14 (MIT DecAI Summit)</strong></p>
-      <ul style="list-style-type: none; padding: 0; margin: 0;">
-        <li style="margin-left: 20px;">
-          
-          <span style="display: block; margin-top: 4px;">
-            <strong>Location:</strong> MIT Media Lab, Room 633<br />
-          
-            <strong>4:00 PM</strong> – Welcome address<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;• Decentralized AI updates, MIT engagement opportunities<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;• How to get the most from the summit<br />
-            <em>Presenters:</em> Ramesh Raskar, Chris Pease<br />
-          
-            <strong>4:15 PM</strong> – Session with Anna Kazlauskas (Vana)<br />
-          
-            <strong>4:45 PM</strong> – How startups could monetize NANDA and explore real-world applications<br />
-            <em>Presented by:</em> MIT Team<br />
-          
-            <strong>5:15 PM</strong> – Multi-Agent Economy Panel<br />
-            <em>Moderator:</em> Michael Casey (Chairman, Decentralized AI Society)<br />
-            <em>Panelists:</em><br />
-            &nbsp;&nbsp;&nbsp;&nbsp;• Toufi Saliba (CEO, Hypercycle)<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;• Clara Tsao (Director, Filecoin Foundation)<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;• Pei Chen (Executive Director, Theoriq Foundation)<br />
-          
-            <strong>5:45 PM</strong> – Closing Notes<br />
-            <strong>6:00 PM</strong> – Invitational DecAI dinner sponsored by VANA
-          </span>
-        </li>
-      </ul>
-
-      <p><strong>Tue, April 15 (MIT DecAI Summit at Imagination in Action)</strong></p>
-
-      <ul style="list-style-type: none; padding: 0; margin: 0;">
-        <li style="margin-left: 20px;">
-          <strong>The Future Internet of AI Agents and Why this is a New Frontier</strong><br>
-          <em>10:30 AM – Multipurpose Room, 6th Floor</em><br>
-          Speaker: Ramesh Raskar
-        </li>
-      
-        <li style="margin-left: 20px;">
-          <strong>The Beginning of the New Era – Internet of AI Agents</strong><br>
-          <em>12:00 – 12:30 PM – 3rd Floor Atrium</em><br>
-          Speakers:<br>
-          &nbsp;&nbsp;• Ramesh Raskar – MIT Media Lab<br>
-          &nbsp;&nbsp;• Anil Sharma – TCS<br>
-          &nbsp;&nbsp;• Anna Kazlauskas – Vana<br>
-          &nbsp;&nbsp;• Aditya Challapally – Microsoft
-        </li>
-      
-        <li style="margin-left: 20px;">
-          <strong>The Commerce Begins – Internet of AI Agents</strong><br>
-          <em>12:30 – 12:55 PM – 3rd Floor Atrium</em><br>
-          Speakers:<br>
-          &nbsp;&nbsp;• MacKenzie Sigalos – CNBC<br>
-          &nbsp;&nbsp;• Einar Braathen – CoinFund<br>
-          &nbsp;&nbsp;• Alpen Sheth – Borderless Capital<br>
-          &nbsp;&nbsp;• Daniel Barabander – Variant<br>
-          &nbsp;&nbsp;• Mark Weber – Techtonic VC
-        </li>
-      
-        <li style="margin-left: 20px;">
-          <strong>Will Enterprise Lead the Race – Internet of AI Agents</strong><br>
-          <em>12:55 – 1:20 PM – 3rd Floor Atrium</em><br>
-          Speakers:<br>
-          &nbsp;&nbsp;• Aaron Pressman – Boston Globe<br>
-          &nbsp;&nbsp;• Caroline Yap – ex-Google<br>
-          &nbsp;&nbsp;• Shyam Nagarajan – Hedera<br>
-          &nbsp;&nbsp;• Rajeev Wadhwa – HCL<br>
-          &nbsp;&nbsp;• Antonio Figueiredo – Salesforce<br>
-          &nbsp;&nbsp;• Zafer Sahinoglu – Mitsubishi Electric Innovation Center
-        </li>
-      
-        <li style="margin-left: 20px;">
-          <strong>Fireside Chat: The Future of Work with AI</strong><br>
-          <em>1:20 PM – 1:30 PM – 3rd Floor Atrium</em><br>
-          Speakers:<br>
-          &nbsp;&nbsp;• MacKenzie Sigalos – CNBC<br>
-          &nbsp;&nbsp;• Ayush Chopra – Camera Culture<br>
-          &nbsp;&nbsp;• Michael Casey – DAIS
-        </li>
-        
-
-        <hr style="margin: 20px 0; border: 1px solid #444;" />
-      
-        <li style="margin-left: 20px;">
-          <strong>Block A — Agentic Futures - Internet of AI Agents</strong><br>
-          <em>1:45 – 2:45 PM – Bartos Theater(Toward the other side —look for signs)</em><br>
-          Speakers & Topics:<br>
-          &nbsp;&nbsp;• Chris Pease – AgentiCorp: Multi-Agent Systems (next 12 months)<br>
-          &nbsp;&nbsp;• Abhishek Singh – MIT Media Lab: Nanda Protocol<br>
-          &nbsp;&nbsp;• Naman + Jon – NANDA Team: NANDA<br>
-          &nbsp;&nbsp;• Andrea Ridi – ScaleUp Labs: Agent Commerce<br>
-          &nbsp;&nbsp;• Marco Cello – Meshify: Agents for SME Operations<br>
-          &nbsp;&nbsp;• Raghu Bala – Synergetics: Agent Registries (AgentWorks Platform)<br>
-          &nbsp;&nbsp;• Anil Sharma – TCS: Human Intelligence + Decentralized Intelligence<br>
-          &nbsp;&nbsp;• Peeyush Aggarwal – Deloitte: Data Across Silos<br>
-          &nbsp;&nbsp;• Aditya Challapally – Microsoft: Edge AI<br>
-          &nbsp;&nbsp;• William Lindskog-Münzing – Flower Labs: Federated Learning<br>
-          &nbsp;&nbsp;• Cameron Dennis – NEAR AI: Private Agent Cloud<br>
-          &nbsp;&nbsp;• Vlad Larin – Fortytwo: Planetary-Scale Intelligence<br>
-          &nbsp;&nbsp;• John Donaghy – Gensyn: Network Protocol<br>
-          &nbsp;&nbsp;• Phil McMannis – Beacon Protocol: Private Data Networks<br>
-          &nbsp;&nbsp;• Ayush Chopra – Camera Culture: Large Population Models<br>
-          &nbsp;&nbsp;• Richard Blythman – Naptha: Framework for Multi-Agent Systems<br>
-          &nbsp;&nbsp;• Gabriela Torres – Sundai: A2A Payments (Radius × Sundai)<br>
-          &nbsp;&nbsp;• Gauri Gupta – Parallel Web Systems: AI Agents Future landscape
-
-        </li>
-
-        <li style="margin-left: 20px;">
-          <strong>Break</strong><br>
-          <em>2:45 – 3:15 PM</em>
-        </li>
-        
-        <li style="margin-left: 20px;">
-          <strong>Block B – Lightning Presentations (1 min each)</strong><br>
-          <em>3:15 PM – Bartos Theater</em><br>
-          Presenters:<br>
-          &nbsp;&nbsp;• Alyssa Taliotis – 42os<br>
-          &nbsp;&nbsp;• Maria Gorskikh – NANDA development for startups<br>
-          &nbsp;&nbsp;• Jim Nasr – Acoer<br>
-          &nbsp;&nbsp;• Alessandro De Carli – Acurast Association<br>
-          &nbsp;&nbsp;• Liz Graham – Ada IQ<br>
-          &nbsp;&nbsp;• Levi Rybalov – Apiary (rebrand in progress)<br>
-          &nbsp;&nbsp;• Gautham Pasupuleti – Biodesign Innovation Labs, Inc<br>
-          &nbsp;&nbsp;• Lia Müller Peña – bitGPT<br>
-          &nbsp;&nbsp;• SATHYA KRISHNASAMY – ChainAim Labs: ZK-PRET<br>
-          &nbsp;&nbsp;• Matthew Blumberg – Charity Engine<br>
-          &nbsp;&nbsp;• Rahul Manikandan, Bharath Vishal G – Digital Biomedical<br>
-          &nbsp;&nbsp;• Sudhendra Kambhamettu – Dropout<br>
-          &nbsp;&nbsp;• Dave Peak – Easy Bee<br>
-          &nbsp;&nbsp;• Matthew Blumberg – Find.Bio<br>
-          &nbsp;&nbsp;• Aoife Manley – Gemsen<br>
-          &nbsp;&nbsp;• Alex G. Lee – HealthnovationAI<br>
-          &nbsp;&nbsp;• Ada – Hetu<br>
-          &nbsp;&nbsp;• Dr. Maha Achour – Kodamai<br>
-          &nbsp;&nbsp;• Erik Jespersen – MyLife<br>
-          &nbsp;&nbsp;• Vlad Duda – Nomad AI<br>
-          &nbsp;&nbsp;• Jay Ma – Nyxion<br>
-          &nbsp;&nbsp;• David S. Bennahum – ONIX<br>
-          &nbsp;&nbsp;• Marvin Tong – Phala<br>
-          &nbsp;&nbsp;• Kenric Nelson – Photrek<br>
-          &nbsp;&nbsp;• Tim Miano – Polymathic<br>
-          &nbsp;&nbsp;• Nick Trauger – Reso Network<br>
-          &nbsp;&nbsp;• Niraj Pant – Ritual<br>
-          &nbsp;&nbsp;• Swapneel Mehta – Sakhi<br>
-          &nbsp;&nbsp;• Stu Angus – Scriptome.AI<br>
-          &nbsp;&nbsp;• Tejas Gopalan – Smortr<br>
-          &nbsp;&nbsp;• Michael Goodwin – SQE<br>
-          &nbsp;&nbsp;• Cristina Grau-Vilchez – Twintual Inc.<br>
-          &nbsp;&nbsp;• Sree bhargavi balija – UFM-R<br>
-          &nbsp;&nbsp;• Agrim Mithal – Undergraduation.com<br>
-        </li>
-
-        <li style="margin-left: 20px;">
-          <strong>Building with Vana - An Open Protocol for Data Sovereignty</strong><br>
-          <em>4:30 PM – Bartos Theater</em><br>
-          Presenters:<br>
-          &nbsp;&nbsp;• Anna Kazlauskas<br>
-        </li>
-        
-      </ul>
-      
-
-      <p><strong>Wed, April 16 (MIT DecAI Summit)</strong></p>
-      <ul style="list-style-type: none; padding: 0; margin: 0;">
-        <li style="margin-left: 20px;">MIT DecAI Working session for Working Groups</li>
-      </ul>
-    </section>
-   
-
-
-    <!-- SUMMIT DETAILS -->
-    <section class="content-section">
-      <h2>Event Details</h2>
-      <p>
-        <strong>Date:</strong> April 14 - 16, 2025  
-        <br><strong>Location:</strong> MIT Media Lab<br>
-        75 Amherst Street, Cambridge, MA
-      </p>
-
-      <p>
-        <em>The Internet of AIs with Edge Compute, Siloed Data, Agents, and Data Markets</em>
-      </p>
-      <p>
-        In today's AI landscape, data, computation, and governance are centralized. 
-        Decentralized AI offers a promising alternative leveraging intelligent, 
-        network-based approaches to improve collaboration, incentives, and 
-        innovation at the edges. It offers a promising alternative enabling 
-        collaboration between distrusted, disincentivized, and disinterested entities.
-      </p>
-      <p>
-        AI has made remarkable strides, showcasing its vast ability to tackle 
-        large-scale challenges. These advancements open new possibilities 
-        for areas where data and knowledge are distributed across different 
-        organizations and regions—such as healthcare, climate science, and 
-        supply chain management. We highlight five essential technical opportunities:
-        (1) enhancing privacy, (2) ensuring verifiability, (3) aligning incentives, 
-        (4) enabling orchestration, and (5) improving crowdUX. By addressing 
-        these opportunities, diverse entities can collaborate to solve global 
-        issues while still achieving their local goals. This vision of Decentralized AI 
-        encourages further dialogue and research toward a decentralized, inclusive, 
-        and resilient AI future.
-      </p>
-
-      <!-- BUTTONS -->
-      <div class="button-row">
-        <a href="https://lu.ma/MIT-DecAI-Summit" target="_blank">
-          Register as an attendee
-        </a>
-        <a href="https://forms.gle/tp5JSDYPdzV54pH89" target="_blank">
-          Apply to present as a startup
-        </a>
-        <!-- NEW HACKATHON BUTTON -->
-        <a href="https://lu.ma/nanda" target="_blank">
-          Join Nanda as Startup or Developer
-        </a>
-      </div>
-    </section>
-
- 
- 
-
-    <!-- Past Event Recap -->
-    <section class="content-section">
-      <h2>Past Summit</h2>
-      <p>
-        The MIT Decentralized AI Summit on October 11, 2024
-        focused on the potential of decentralized AI to transform
-        various sectors. The summit addressed the limitations of centralized AI systems,
-        particularly in areas where data and knowledge are distributed across organizations
-        and regions, such as healthcare, climate science, and supply chain management.
-        Key discussions highlighted five technical opportunities: enhancing privacy,
-        ensuring verifiability, aligning incentives, enabling orchestration, and improving
-        user experience. By addressing these areas, the summit emphasized how diverse entities
-        can collaborate on global challenges while achieving their local objectives,
-        promoting a decentralized, inclusive, and resilient AI future. The event also
-        featured a project showcase, where participants presented their ventures, fostering
-        networking and collaboration among researchers, entrepreneurs, and investors.
-      </p>
-    </section>
-
-    <!-- Notice for MIT Affiliates -->
-    <section class="content-section">
-      <h2>Important Notice (MIT Affiliates)</h2>
-      <p>
-        If you are presenting research findings that haven’t been made public, 
-        please ensure you have approval from your advisor or principal investigator, 
-        and consult your institution’s technology licensing office (for MIT folks, that’s the TLO). 
-        This prevents compromising future patent filings or violating sponsor agreements.
-      </p>
-    </section>
+    <!-- HERO TEXT & BUTTONS -->
+    <h1 class="hero-title">Networked Agents in Decentralized Architecture</h1>
+    <p class="hero-subtitle">
+      We advance AI research by harnessing decentralization, privacy,
+      and security — ensuring that the benefits of AI reach all of humanity.
+    </p>
+    <div class="hero-buttons">
+      <a href="https://www.media.mit.edu/projects/decentralized-ai/publications/" class="hero-button">
+        View research
+      </a>
+      <a href="https://lu.ma/nanda" class="hero-button">
+        NANDA Events
+      </a>
+      <a href="about.html" class="hero-button">
+        Learn more →
+      </a>
+    </div>
 
   </main>
 
   <!-- FOOTER -->
   <footer class="footer">
+    <br><br><br><br><br><br><br><br><br> <br> <br>
     <p>MIT Decentralized AI 2025. Rohan Khanna 2025.</p>
   </footer>
 
